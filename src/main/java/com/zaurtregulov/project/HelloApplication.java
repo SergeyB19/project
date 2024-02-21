@@ -39,6 +39,9 @@ public class HelloApplication extends Application {
             if (e.getCode() == KeyCode.D) {
                 HelloController3.right = false;
             }
+            if (e.getCode() == KeyCode.ESCAPE) {
+                HelloController3.isPause = !HelloController3.isPause;
+            }
         });
 
         stage.show();
