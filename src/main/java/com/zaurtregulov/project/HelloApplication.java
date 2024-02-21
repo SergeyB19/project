@@ -3,6 +3,7 @@ package com.zaurtregulov.project;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -16,6 +17,30 @@ public class HelloApplication extends Application {
 //        stage.setTitle("Tic Tac Toe");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
+
+        scene.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.SPACE && !HelloController3.jump) {
+                HelloController3.jump = true;
+            }
+            if (e.getCode() == KeyCode.A) {
+                HelloController3.left = true;
+            }
+            if (e.getCode() == KeyCode.D) {
+                HelloController3.right = true;
+            }
+        });
+
+        scene.setOnKeyReleased(e -> {
+
+            if (e.getCode() == KeyCode.A) {
+                HelloController3.left = false;
+            }
+
+            if (e.getCode() == KeyCode.D) {
+                HelloController3.right = false;
+            }
+        });
+
         stage.show();
     }
 
