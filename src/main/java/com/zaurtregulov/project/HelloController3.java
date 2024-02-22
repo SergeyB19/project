@@ -21,7 +21,7 @@ public class HelloController3 {
     private ImageView bg1, bg2, player, enemy;
 
     @FXML
-    private Label labelPause;
+    private Label labelPause, labelLose;
 
     private final int BG_WIDTH = 718;
 
@@ -62,7 +62,14 @@ public class HelloController3 {
                 jumpDownSpeed = 5;
                 parallelTransition.play();
                 enemyTransition.play();
-                labelPause.setVisible(true);
+            }
+            if (player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+                System.out.println("Collision");
+                labelLose.setVisible(true);
+                playerSpeed = 0;
+                jumpDownSpeed = 0;
+                parallelTransition.pause();
+                enemyTransition.pause();
             }
         }
     };
